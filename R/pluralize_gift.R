@@ -10,11 +10,15 @@
 #' @import purrr
 #'
 #' @export
-pluralize_gift <- function(gift){
+pluralize_gift <- function(gifts){
 
-gift <- gift %>%
-  str_replace()
 
-return(gift)
+  gifts <- gifts %>%
+    str_replace("y$", "ies") %>%
+    str_replace("[a-z&&[^s]]$", paste(str_sub(gifts, nchar(gifts)), "s", sep="")) %>%
+    str_replace("gooses", "geese")
+
+
+  return(gifts)
 
 }
