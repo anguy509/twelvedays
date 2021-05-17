@@ -17,7 +17,7 @@
 #' @export
 sing_day <- function(dataset, line, phrase_col){
   phrases <- dataset %>% pull({{phrase_col}})
-  phrase <- glue("On the ", {dataset$Day.in.Words[line]}, " of Christmas, my true love sent to me,", "\n")
+  phrase <- glue("On the ", {dataset$Day.in.Words[line]}, " day of Christmas, my true love sent to me,", "\n")
   result <- ""
 
   if(line >= 2)
