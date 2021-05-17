@@ -20,9 +20,22 @@
 
 
 make_phrase <- function(num, num_word, item, verb, adjective, location){
+  an <- F
+  if(str_detect(item, "^[aeiou]"))
+  {
+    an <- T
+  }
   phrase <- glue(as.character(english(num)), " {adjective} {item} {verb} {location}", .na = "")
+  if(an)
+  {
+    phrase <- phrase %>%
+      str_replace("one", "an")
+  }else{
+    phrase <- phrase %>%
+      str_replace("one", "a")
+  }
+
   phrase <- phrase %>%
-    str_replace("one", "a") %>%
     str_squish()
   return(phrase)
 }
