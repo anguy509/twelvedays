@@ -9,11 +9,11 @@
 #'
 #' @return A string containing the words in grammatical order.
 #'
+#' @import english
 #' @import stringr
 #' @import glue
 #' @import dplyr
 #' @import purrr
-#' @import english
 #'
 #' @export
 
