@@ -1,6 +1,7 @@
 context("make_phrase")
 
 test_that("make_phrase works", {
+  library(english)
   output <- "ten lords a-leaping"
   expect_equal(make_phrase(num = 10,
                            num_word = "ten",
