@@ -13,17 +13,18 @@
 #' @import glue
 #' @import dplyr
 #' @import purrr
+#' @import english
 #'
 #' @export
 
 
 
 make_phrase <- function(num, num_word, item, verb, adjective, location){
-
-  verb <- str_replace_na(verb, "")
-
-  #????
-
-
+  phrase <- glue(as.character(english(num)), " {adjective} {item} {verb} {location}", .na = "")
+  phrase <- phrase %>%
+    str_replace("one", "a") %>%
+    str_squish()
+  return(phrase)
 }
 
+#xmas <- xmas %>% mutate(Full.Phrase = pmap(xmas, ~make_phrase(..1, ..2, ..3, ..4, ..5, ..6)))

@@ -11,13 +11,25 @@
 #' @import dplyr
 #' @import glue
 #' @import purrr
+#' @import english
+#
 #'
 #' @export
 sing_day <- function(dataset, line, phrase_col){
-
   phrases <- dataset %>% pull({{phrase_col}})
+  phrase <- glue("On the ", {dataset$Day.in.Words[line]}, " of Christmas, my true love sent to me,", "\n")
+  result <- ""
 
-  #????
+  if(line >= 2)
+  {
+    result <- map_chr(phrases[line:2], ~paste(result, .x, sep = "", collapse = "\n"))
+    result <- paste(result, collapse = '\n', sep = "")
+    result <- paste(phrase, '\n', result, ' \nand ', phrases[1], '.', sep = "")
+  }
+  else
+  {
+    result<- paste(phrase, '\n', phrases[line], '.', sep = "")
+  }
 
-
+  return(result)
 }
